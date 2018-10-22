@@ -64,7 +64,7 @@ DECLARE
       v_resp_clob      CLOB;
       v_line           VARCHAR2 (1024);
       v_namespace      VARCHAR2 (4000)
-         := 'xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ccs="http://vodafone.com.tr/ServiceCatalog/Business/CCSServices" xmlns:head="http://vodafone.com.tr/EAI/Common/Header" xmlns:v1="http://vodafone.com.tr/ServiceCatalog/Business/SubscriberManagement/ManageCUGMember/v1" xmlns:ns="http://vodafone.com.tr/EAI/Common/ResponseCodes" xmlns:ns0="http://schemas.xmlsoap.org/soap/envelope/"';
+         := 'xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ccs="http://xxx.com.tr/ServiceCatalog/Business/CCSServices" xmlns:head="http://xxx.com.tr/EAI/Common/Header" xmlns:v1="http://xxx.com.tr/ServiceCatalog/Business/SubscriberManagement/ManageCUGMember/v1" xmlns:ns="http://xxx.com.tr/EAI/Common/ResponseCodes" xmlns:ns0="http://schemas.xmlsoap.org/soap/envelope/"';
       v_resp_xml       XMLTYPE;
 
       TYPE resp_type IS RECORD (
@@ -85,9 +85,9 @@ DECLARE
       UTL_HTTP.set_transfer_timeout (60);
       v_req_xml :=
             '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" 
-                                      xmlns:ccs="http://vodafone.com.tr/ServiceCatalog/Business/CCSServices" 
-                                      xmlns:head="http://vodafone.com.tr/EAI/Common/Header" 
-                                      xmlns:v1="http://vodafone.com.tr/ServiceCatalog/Business/SubscriberManagement/ManageCUGMember/v1">
+                                      xmlns:ccs="http://xxx.com.tr/ServiceCatalog/Business/CCSServices" 
+                                      xmlns:head="http://xxx.com.tr/EAI/Common/Header" 
+                                      xmlns:v1="http://xxx.com.tr/ServiceCatalog/Business/SubscriberManagement/ManageCUGMember/v1">
                      <soapenv:Header/>
                      <soapenv:Body>
                         <ccs:ManageCUGMember_v1>

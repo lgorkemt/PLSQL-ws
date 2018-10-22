@@ -31,7 +31,7 @@ DECLARE
       END IF;
    END;
    
-   PROCEDURE delete_vodafone_group_new (
+   PROCEDURE delete_xxx_group_new (
       pi_group_id            IN       VARCHAR2,
       po_error_code          OUT      VARCHAR2,
       po_error_message       OUT      VARCHAR2,
@@ -62,7 +62,7 @@ DECLARE
       v_resp_clob      CLOB;
       v_line           VARCHAR2 (512);
       v_namespace      VARCHAR2 (4000)
-         := 'xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:sieb="http://vodafone.com.tr/ServiceCatalog/Business/SiebelServices" xmlns:res="http://vodafone.com.tr/EAI/Common/ResponseCodes"';
+         := 'xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:sieb="http://xxx.com.tr/ServiceCatalog/Business/SiebelServices" xmlns:res="http://xxx.com.tr/EAI/Common/ResponseCodes"';
       v_resp_xml       XMLTYPE;
 
       TYPE resp_type IS RECORD (
@@ -83,12 +83,12 @@ DECLARE
       UTL_HTTP.set_transfer_timeout (60);
       v_req_xml :=
             '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" 
-                                   xmlns:sieb="http://vodafone.com.tr/ServiceCatalog/Business/SiebelServices" 
-                                   xmlns:head="http://vodafone.com.tr/EAI/Common/Header" 
-                                   xmlns:v1="http://vodafone.com.tr/ServiceCatalog/Business/SubscriberManagement/DeleteVodafoneGroup/v1">
+                                   xmlns:sieb="http://xxx.com.tr/ServiceCatalog/Business/SiebelServices" 
+                                   xmlns:head="http://xxx.com.tr/EAI/Common/Header" 
+                                   xmlns:v1="http://xxx.com.tr/ServiceCatalog/Business/SubscriberManagement/DeletexxxGroup/v1">
                    <soapenv:Header/>
                    <soapenv:Body>
-                      <sieb:DeleteVodafoneGroup_v1>
+                      <sieb:DeletexxxGroup_v1>
                       <Header>
                         <head:SourceSystem>ICCB</head:SourceSystem>
                         <head:ReplyExpected>Now</head:ReplyExpected>
@@ -104,7 +104,7 @@ DECLARE
          || '</v1:GroupId>
                         </v1:Request>
                       </Body>
-                    </sieb:DeleteVodafoneGroup_v1>
+                    </sieb:DeletexxxGroup_v1>
              </soapenv:Body>
           </soapenv:Envelope>';
       v_req := UTL_HTTP.begin_request (v_endpoint_url);
@@ -112,7 +112,7 @@ DECLARE
       UTL_HTTP.set_header (v_req, 'Host', v_host || ':' || v_port);
       UTL_HTTP.set_header (v_req, 'Connection', 'close');
       UTL_HTTP.set_header (v_req, 'Content-Type', 'text/xml;charset=UTF-8');
-      UTL_HTTP.set_header (v_req, 'SOAPAction', '"DeleteVodafoneGroup_v1"');
+      UTL_HTTP.set_header (v_req, 'SOAPAction', '"DeletexxxGroup_v1"');
       UTL_HTTP.set_header (v_req, 'Content-Length', LENGTH (v_req_xml));
       UTL_HTTP.write_text (v_req, v_req_xml);
       v_resp := UTL_HTTP.get_response (v_req);
@@ -147,7 +147,7 @@ DECLARE
       check_fault (v_resp_xml, v_namespace);
       v_resp_xml :=
          v_resp_xml.EXTRACT
-            ('/soapenv:Envelope/soapenv:Body/sieb:DeleteVodafoneGroup_v1Response/Header/child::node()',
+            ('/soapenv:Envelope/soapenv:Body/sieb:DeletexxxGroup_v1Response/Header/child::node()',
              v_namespace
             );
       DBMS_OUTPUT.put_line (v_resp_xml.getstringval ());
@@ -195,7 +195,7 @@ DECLARE
  
 BEGIN
    vi_group_id := '29';
-   delete_vodafone_group_new (
+   delete_xxx_group_new (
       vi_group_id             ,
       vo_error_code          ,
       vo_error_message       ,

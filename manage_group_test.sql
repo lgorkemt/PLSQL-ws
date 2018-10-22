@@ -14,7 +14,7 @@ DECLARE
    vo_error_description         VARCHAR2(4000);
 
    
-   PROCEDURE manage_vodafone_group (
+   PROCEDURE manage_xxx_group (
       pi_group_name                 IN       VARCHAR2,                    -- O
       pi_group_id                   IN       VARCHAR2,                    -- M
       pi_parent_group_id            IN       VARCHAR2,                    -- O
@@ -116,7 +116,7 @@ DECLARE
          po_status_code := '-1';
          po_error_code := SQLCODE;
          po_error_description := SUBSTR (SQLERRM, 1, 255);
-   END manage_vodafone_group;
+   END manage_xxx_group;
    
 BEGIN
    vi_group_name := 'DENEME GRUP';
@@ -130,7 +130,7 @@ BEGIN
    vi_operation_type   := 'ADD';
    vi_discount_percantage := '10';   
    
-    manage_vodafone_group (
+    manage_xxx_group (
       vi_group_name,            
       vi_group_id,                   
       vi_parent_group_id,        

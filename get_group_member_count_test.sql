@@ -64,7 +64,7 @@ DECLARE
       v_body_clob      CLOB;
       v_line           VARCHAR2 (2048);
       v_namespace      VARCHAR2 (4000)
-         := 'xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:sieb="http://vodafone.com.tr/ServiceCatalog/Business/SiebelServices" xmlns:ns="http://vodafone.com.tr/ServiceCatalog/Business/SubscriberInquiries/GetGroupMemberTotal/v1"';
+         := 'xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:sieb="http://xxx.com.tr/ServiceCatalog/Business/SiebelServices" xmlns:ns="http://xxx.com.tr/ServiceCatalog/Business/SubscriberInquiries/GetGroupMemberTotal/v1"';
          
       v_resp_xml       XMLTYPE;
       v_head_xml       XMLTYPE;
@@ -93,9 +93,9 @@ DECLARE
       UTL_HTTP.set_transfer_timeout (10);
       v_req_xml :=
             '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" 
-                                      xmlns:sieb="http://vodafone.com.tr/ServiceCatalog/Business/SiebelServices" 
-                                      xmlns:head="http://vodafone.com.tr/EAI/Common/Header" 
-                                      xmlns:v1="http://vodafone.com.tr/ServiceCatalog/Business/SubscriberInquiries/GetGroupMemberTotal/v1">
+                                      xmlns:sieb="http://xxx.com.tr/ServiceCatalog/Business/SiebelServices" 
+                                      xmlns:head="http://xxx.com.tr/EAI/Common/Header" 
+                                      xmlns:v1="http://xxx.com.tr/ServiceCatalog/Business/SubscriberInquiries/GetGroupMemberTotal/v1">
                      <soapenv:Header/>
                      <soapenv:Body>
                         <sieb:GetGroupMemberTotal_v1>
@@ -165,48 +165,48 @@ DECLARE
              v_namespace
             );
       
-      IF( v_head_xml.EXTRACT ('/ns:ResponseCode/child::node()', 'xmlns:ns="http://vodafone.com.tr/EAI/Common/ResponseCodes"') IS NOT NULL)
+      IF( v_head_xml.EXTRACT ('/ns:ResponseCode/child::node()', 'xmlns:ns="http://xxx.com.tr/EAI/Common/ResponseCodes"') IS NOT NULL)
       THEN
           v_result.responsecode :=
-             v_head_xml.EXTRACT ('/ns:ResponseCode/child::node()', 'xmlns:ns="http://vodafone.com.tr/EAI/Common/ResponseCodes"').getstringval();
+             v_head_xml.EXTRACT ('/ns:ResponseCode/child::node()', 'xmlns:ns="http://xxx.com.tr/EAI/Common/ResponseCodes"').getstringval();
       END IF; 
        
-      IF( v_head_xml.EXTRACT ('/ns:ResponseMsg/child::node()', 'xmlns:ns="http://vodafone.com.tr/EAI/Common/ResponseCodes"') IS NOT NULL)
+      IF( v_head_xml.EXTRACT ('/ns:ResponseMsg/child::node()', 'xmlns:ns="http://xxx.com.tr/EAI/Common/ResponseCodes"') IS NOT NULL)
       THEN          
           v_result.responsemsg :=
-             v_head_xml.EXTRACT ('/ns:ResponseMsg/child::node()', 'xmlns:ns="http://vodafone.com.tr/EAI/Common/ResponseCodes"').getstringval();
+             v_head_xml.EXTRACT ('/ns:ResponseMsg/child::node()', 'xmlns:ns="http://xxx.com.tr/EAI/Common/ResponseCodes"').getstringval();
       END IF;                                                                      
 
-      IF( v_head_xml.EXTRACT ('/ns:ErrorCode/child::node()', 'xmlns:ns="http://vodafone.com.tr/EAI/Common/ResponseCodes"') IS NOT NULL)
+      IF( v_head_xml.EXTRACT ('/ns:ErrorCode/child::node()', 'xmlns:ns="http://xxx.com.tr/EAI/Common/ResponseCodes"') IS NOT NULL)
       THEN           
           v_result.errorcode :=
-             v_head_xml.EXTRACT ('/ns:ErrorCode/child::node()', 'xmlns:ns="http://vodafone.com.tr/EAI/Common/ResponseCodes"').getstringval();
+             v_head_xml.EXTRACT ('/ns:ErrorCode/child::node()', 'xmlns:ns="http://xxx.com.tr/EAI/Common/ResponseCodes"').getstringval();
       END IF;
  
-      IF( v_head_xml.EXTRACT ('/ns:ErrorDescription/child::node()', 'xmlns:ns="http://vodafone.com.tr/EAI/Common/ResponseCodes"') IS NOT NULL)
+      IF( v_head_xml.EXTRACT ('/ns:ErrorDescription/child::node()', 'xmlns:ns="http://xxx.com.tr/EAI/Common/ResponseCodes"') IS NOT NULL)
       THEN            
           v_result.errordescription :=
-             v_head_xml.EXTRACT ('/ns:ErrorDescription/child::node()', 'xmlns:ns="http://vodafone.com.tr/EAI/Common/ResponseCodes"').getstringval();
+             v_head_xml.EXTRACT ('/ns:ErrorDescription/child::node()', 'xmlns:ns="http://xxx.com.tr/EAI/Common/ResponseCodes"').getstringval();
       END IF;
 
-      IF( v_head_xml.EXTRACT ('/ns:RequestId/child::node()', 'xmlns:ns="http://vodafone.com.tr/EAI/Common/ResponseCodes"') IS NOT NULL)
+      IF( v_head_xml.EXTRACT ('/ns:RequestId/child::node()', 'xmlns:ns="http://xxx.com.tr/EAI/Common/ResponseCodes"') IS NOT NULL)
       THEN        
           v_result.requestid :=
-             v_head_xml.EXTRACT ('/ns:RequestId/child::node()', 'xmlns:ns="http://vodafone.com.tr/EAI/Common/ResponseCodes"').getstringval();
+             v_head_xml.EXTRACT ('/ns:RequestId/child::node()', 'xmlns:ns="http://xxx.com.tr/EAI/Common/ResponseCodes"').getstringval();
       END IF;      
       
          
-      IF( v_head_xml.EXTRACT ('/ns:Attributes/child::node()', 'xmlns:ns="http://vodafone.com.tr/EAI/Common/ResponseCodes"') IS NOT NULL)
+      IF( v_head_xml.EXTRACT ('/ns:Attributes/child::node()', 'xmlns:ns="http://xxx.com.tr/EAI/Common/ResponseCodes"') IS NOT NULL)
       THEN                                                                      
           v_result.ATTRIBUTES :=
-             v_head_xml.EXTRACT ('/ns:Attributes/child::node()', 'xmlns:ns="http://vodafone.com.tr/EAI/Common/ResponseCodes"').getstringval(); 
+             v_head_xml.EXTRACT ('/ns:Attributes/child::node()', 'xmlns:ns="http://xxx.com.tr/EAI/Common/ResponseCodes"').getstringval(); 
       END IF;      
                                                                           
       po_error_code := v_result.errorcode;
       po_error_message := v_result.responsemsg;
       po_error_description := v_result.errordescription;
      
-      --v_namespace := v_namespace ||' xmlns:ns="http://vodafone.com.tr/ServiceCatalog/Business/SubscriberInquiries/GetGroupMemberTotal/v1" xmlns:ns0="http://schemas.xmlsoap.org/soap/envelope/"';
+      --v_namespace := v_namespace ||' xmlns:ns="http://xxx.com.tr/ServiceCatalog/Business/SubscriberInquiries/GetGroupMemberTotal/v1" xmlns:ns0="http://schemas.xmlsoap.org/soap/envelope/"';
       --v_body_xml := v_resp_xml.extract('/soapenv:Envelope/soapenv:Body/sieb:GetGroupMemberTotal_v1Response/Body/child::node()',v_namespace);
       --v_member_count := v_body_xml.extract('/ns:Response/ns:GetGroupMemberTotal/ns:MemberCount/child::node()',v_namespace).getStringVal();
 
